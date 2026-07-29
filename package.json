@@ -1,0 +1,42 @@
+{
+  "name": "aibos-framework",
+  "version": "2.0.0",
+  "description": "AIBOS - World-Class AI Business Operating System. Master blueprint for building unlimited companies & products with AI.",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "github-intelligence": "node src/core/github-intelligence/cli.js",
+    "github-intelligence:run": "node -e \"require('./src/core/github-intelligence/intelligence-runner.js')(process.env.GITHUB_TOKEN).run()\"",
+    "test": "jest",
+    "lint": "eslint src/",
+    "build": "echo 'Build script for production'"
+  },
+  "dependencies": {
+    "axios": "^1.6.0",
+    "express": "^4.18.0",
+    "dotenv": "^16.0.0",
+    "pg": "^8.11.0",
+    "redis": "^4.6.0",
+    "node-cron": "^3.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0",
+    "jest": "^29.0.0",
+    "eslint": "^8.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "keywords": [
+    "AI",
+    "business-automation",
+    "framework",
+    "saas",
+    "crm",
+    "sales"
+  ],
+  "author": "AIBOS Team",
+  "license": "MIT"
+}

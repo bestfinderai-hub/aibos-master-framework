@@ -1,0 +1,45 @@
+name: GitHub Intelligence Engine
+
+on:
+  schedule:
+    # Run daily at 06:00 UTC
+    - cron: '0 6 * * *'
+  workflow_dispatch:  # Allow manual triggers
+
+jobs:
+  intelligence:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run GitHub Intelligence Engine
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm run github-intelligence
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: github-intelligence-results
+          path: data/github-intelligence/
+          retention-days: 90
+
+      - name: Commit results
+        if: success()
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add data/github-intelligence/
+          git commit -m "🤖 GitHub Intelligence: Daily analysis $(date -u +'%Y-%m-%d')" || true
+          git push
