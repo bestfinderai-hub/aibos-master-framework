@@ -8,9 +8,16 @@
     "dev": "nodemon src/index.js",
     "github-intelligence": "node src/core/github-intelligence/cli.js",
     "github-intelligence:run": "node -e \"require('./src/core/github-intelligence/intelligence-runner.js')(process.env.GITHUB_TOKEN).run()\"",
-    "test": "jest",
-    "lint": "eslint src/",
-    "build": "echo 'Build script for production'"
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "test:ci": "jest --ci --coverage --maxWorkers=2",
+    "lint": "eslint src/ --max-warnings 0",
+    "lint:fix": "eslint src/ --fix",
+    "format": "prettier --write \"src/**/*.{js,json,md}\"",
+    "format:check": "prettier --check \"src/**/*.{js,json,md}\"",
+    "security": "npm audit --production",
+    "build": "tsc",
+    "precommit": "npm run lint && npm run format && npm run test"
   },
   "dependencies": {
     "axios": "^1.6.0",
@@ -23,7 +30,14 @@
   "devDependencies": {
     "nodemon": "^3.0.0",
     "jest": "^29.0.0",
-    "eslint": "^8.0.0"
+    "eslint": "^8.0.0",
+    "prettier": "^3.0.0",
+    "husky": "^8.0.0",
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "babel-jest": "^29.0.0",
+    "@babel/preset-env": "^7.20.0",
+    "supertest": "^6.3.0"
   },
   "engines": {
     "node": ">=18.0.0",
