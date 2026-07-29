@@ -1,0 +1,44 @@
+{
+  "name": "@aibos/core-platform",
+  "version": "1.0.0",
+  "description": "AIBOS Core Platform - Stable base for all projects",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "lint": "eslint src --fix",
+    "format": "prettier --write src",
+    "migrate": "node scripts/migrate.js",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "pg": "^8.11.0",
+    "redis": "^4.6.0",
+    "jsonwebtoken": "^9.1.0",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.3.1",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "pino": "^8.17.0",
+    "stripe": "^14.10.0",
+    "nodemailer": "^6.9.7",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "typescript": "^5.3.3",
+    "@types/express": "^4.17.21",
+    "@types/node": "^20.10.5",
+    "jest": "^29.7.0",
+    "@types/jest": "^29.5.11",
+    "tsx": "^4.7.0",
+    "eslint": "^8.56.0",
+    "prettier": "^3.1.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
