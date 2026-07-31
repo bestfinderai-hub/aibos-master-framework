@@ -11,7 +11,7 @@ interface DecisionMaker {
   email?: string;
   linkedin?: string;
   influenceScore: number; // 0-100
-  budget ownership: boolean;
+  budgetOwnership: boolean;
   timeToInfluence: number; // days (how quickly can they decide)
   buyingStage: 'awareness' | 'consideration' | 'decision' | 'unknown';
   painPoints: string[];
@@ -70,7 +70,7 @@ export class DecisionMakerResearch {
         email: `${role.title.toLowerCase().replace(' ', '.')}@${company.toLowerCase().replace(' ', '')}.com`,
         linkedin: `https://linkedin.com/in/${role.title.toLowerCase().replace(' ', '-')}`,
         influenceScore: Math.round(Math.random() * 100),
-        budget ownership: role.seniority === 'C-level',
+        budgetOwnership: role.seniority === 'C-level',
         timeToInfluence: Math.floor(Math.random() * 14) + 1, // 1-14 days
         buyingStage: ['awareness', 'consideration', 'decision', 'unknown'][Math.floor(Math.random() * 4)] as any,
         painPoints: this.generatePainPoints(role.department),
@@ -89,7 +89,7 @@ export class DecisionMakerResearch {
     const champion = sorted.find(m => m.buyingStage === 'decision') || sorted[0] || null;
     const influencer = sorted.find((m, i) => i !== 0 && m.influenceScore > 60) || null;
     const gatekeeper = makers.find(m => m.title.includes('Manager') || m.title.includes('Director')) || null;
-    const budgetOwner = makers.find(m => m.budget ownership) || null;
+    const budgetOwner = makers.find(m => m.budgetOwnership) || null;
 
     const other = makers.filter(
       m => m !== champion && m !== influencer && m !== gatekeeper && m !== budgetOwner
