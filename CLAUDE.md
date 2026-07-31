@@ -32,15 +32,30 @@ Claude har **full auktorisering** att arbeta på aibos-framework utan att fråga
    - Spara .md-files för arkitektur-beslut
    - Memory-files för framtida referens
 
+## 🚨 ARKITEKTUR-VERIFIERING REGEL
+
+**Innan kodgranskning:**
+1. Kartlägg: Vilka moduler interagerar?
+2. Verifiera: Är alla integration-punkter på plats?
+3. Sedan: Läs kod
+
+För DEL X: 
+- Vilka externa dependencies?
+- Vilka Event-emitter hooks?
+- Vilka database-relationer?
+
+Se: [[ARKITEKTUR_VERIFIERING_PROTOKOLL]]
+
 ## 🎯 ARBETSFLÖDE
 
 **Typisk dag:**
 1. Läs aktuell DEL:s krav
-2. Implementera i ordning (DEL 5, 6, 7, etc.)
-3. Commit när DEL är klar
-4. Push till GitHub
-5. Uppdatera README + memory
-6. Gå vidare till nästa DEL
+2. Kartlägg arkitektur (moduler + dependencies)
+3. Implementera i ordning (DEL 5, 6, 7, etc.)
+4. Commit när DEL är klar
+5. Push till GitHub
+6. Uppdatera README + memory
+7. Gå vidare till nästa DEL
 
 **Ingen pause för "godkännande"** — bara kör.
 
